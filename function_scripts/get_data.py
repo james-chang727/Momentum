@@ -14,7 +14,7 @@ to a file with filename as 'TrackedIndex_PeriodLength_data.csv'
 def get_period_data(RIC_path, s_date, e_date):
 
     date_list = [d.strftime('%Y-%m-%d') for d in pd.date_range(start=s_date, end=e_date, freq='1M')]
-    RIC_list = list(pd.read_excel(RIC_path, usecols='A', name='RIC')['RIC'])  # add in benchmark to get data
+    RIC_list = list(pd.read_excel(RIC_path, usecols='A')['RIC'])  # add in benchmark to get data
     max_row = 3000//int(len(RIC_list))
     
     df = ek.get_timeseries(RIC_list, fields='CLOSE', start_date=date_list[0], end_date=date_list[max_row-1],
@@ -28,7 +28,7 @@ def get_period_data(RIC_path, s_date, e_date):
                                      end_date=date_list[-1], interval='monthly', corax='adjusted'))
     name = RIC_path.split('_')[0]
 
-    return df.to_csv(f'{name}_20yr.csv')
+    return df.to_csv(f'{name}_20yr2.csv')
 
 # change
-get_period_data('../data/TWMC100_RICs.xlsx', '2004-06-30', '2020-07-01')
+get_period_data('data/TWMC100_RICs.xlsx', '2004-06-30', '2020-07-01')

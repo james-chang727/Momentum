@@ -42,7 +42,7 @@ df[futures] = df2['Settlement Price'].values
 filt = [df.index[i] for i in range(len(df.index)) if i % HP == 0]
 df_getRIC = df.loc[filt].pct_change(periods=int(DP / HP)).iloc[int(DP / HP):-1]
 df_applyRIC = df.loc[filt].pct_change().iloc[int(DP / HP) + 1:].applymap(lambda x: x * 100)
-df_beta = pd.read_csv('data/TWMC100_beta_regressed.csv', index_col='Date').loc[filt].iloc[int(DP / HP) + 1:]  # change
+df_beta = pd.read_csv('data/TWMC100_beta_regressed_24mths.csv', index_col='Date').loc[filt].iloc[int(DP / HP) + 1:]  # change
 
 TopWorse10_list = get_DP_TopWorse10(df_getRIC.drop([Benchmark, '.TWII', futures], axis=1))  # Get TopWorse10 list of tuples of lists (get_TopWorse10.py)
 
@@ -123,6 +123,6 @@ ax1.set_ylabel('Portfolio Return (%)')
 ax2.set_ylabel('Cumulative Return (base=1)')
 
 # Save figure
-
+# plt.show()
 # fig.savefig(f'results/Short_{futures}futures_beta_hedged_{Index_name}_{DP}m{HP}m_alpha_{alpha_beta[1]:.2f}_beta_{alpha_beta[0]:.2f}_sharpe_{sharpe:.2f}.png')
 plt.close('all')
