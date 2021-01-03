@@ -7,7 +7,7 @@ import eikon as ek
 ek.set_app_key('bf38826c5e014c1cadf21425ee6e417d2b72fc9a')
 
 data, err = ek.get_data('TXc1', ['TR.SETTLEMENTPRICE.DATE', 'TR.SETTLEMENTPRICE'],
-                        {'SDate': '0', 'EDate': '-225', 'Frq': 'M'})
+                        {'SDate': '0', 'EDate': '-228', 'Frq': 'M'})
 data.drop('Instrument', axis=1, inplace=True)
 data['Date'] = data['Date'].apply(lambda x: x.split('T')[0])
 data['Date'] = pd.to_datetime(data['Date'], format='%Y-%m-%d')

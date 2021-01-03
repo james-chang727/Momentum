@@ -123,6 +123,6 @@ ax1.set_ylabel('Portfolio Return (%)')
 ax2.set_ylabel('Cumulative Return (base=1)')
 
 # Save figure
-# plt.show()
+plt.show()
 # fig.savefig(f'results/Short_{futures}futures_beta_hedged_{Index_name}_{DP}m{HP}m_alpha_{alpha_beta[1]:.2f}_beta_{alpha_beta[0]:.2f}_sharpe_{sharpe:.2f}.png')
 plt.close('all')

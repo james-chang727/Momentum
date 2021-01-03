@@ -15,7 +15,7 @@ def get_beta():
     for column in data.drop(['.TWII'], axis=1).columns:
         stk1 = []
 
-        for i in range(196):  # change value for different indices
+        for i in range(199):  # change value for different indices
             if data[column].iloc[i:i+24].isnull().all():
                 beta = np.NaN
                 stk1.append(beta)
@@ -31,6 +31,6 @@ def get_beta():
     df.index.name = 'Date'
     df.columns = data.drop('.TWII', axis=1).columns.to_list()
 
-    return df.to_csv(f'data/TWMC100_beta_regressed_24mths.csv')
+    return df.to_csv(f'data/TWMC100_beta_regressed_24mths2.csv')
 
 get_beta()
